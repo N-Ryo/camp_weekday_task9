@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
 
   def index
-    @tasks = Tasks.all
+    @tasks = Task.all
   end
 
   def new
@@ -12,8 +12,11 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.save
-    redirect_to @task
+    if @task.save
+      redirect_to @task, notice: 'タスクを登録しました。'
+    else
+      render :new
+    end
   end
 
   def show
@@ -23,13 +26,21 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.update(task_params)
-    redirect_to @task
+    if @task.update(task_params)
+      redirect_to @task, notice: 'タスクを更新しました。'
+    else
+      render :edit
+    end
+    
   end
 
   def destroy
     @task.destroy
     redirect_to tasks_path
+  end
+
+  def hide
+    @tasks = Task.where('is_display=?', false)
   end
 
   private

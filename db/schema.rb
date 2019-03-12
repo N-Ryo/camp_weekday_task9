@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_032457) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "memo"
-    t.boolean "is_display"
+    t.boolean "is_display", default: true
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

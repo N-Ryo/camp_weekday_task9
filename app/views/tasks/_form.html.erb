@@ -1,0 +1,20 @@
+
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <% task.errors.full_messages.each do |message| %>
+        <p style="color: red;"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+<%= form_with model: @task, local: true do |form|%>
+  <%= form.label 'タスク名：' %>
+  <%= form.text_field :title %>
+  <%= form.label 'タスクメモ：' %>
+  <%= form.text_area :memo %>
+  <%= form.label '状態：' %>
+  <%= form.select :status,{'下書き'=>'draft','公開'=>'published','アーカイブ'=>'archieved'} %>
+  <%= form.submit '登録'%>
+<% end%>
+
+<%= link_to '一覧', tasks_path %>
