@@ -8,12 +8,18 @@
   <% end %>
 
 <%= form_with model: @task, local: true do |form|%>
-  <%= form.label 'タスク名：' %>
-  <%= form.text_field :title %>
-  <%= form.label 'タスクメモ：' %>
-  <%= form.text_area :memo %>
-  <%= form.label '状態：' %>
-  <%= form.select :status,{'下書き'=>'draft','公開'=>'published','アーカイブ'=>'archieved'} %>
+  <p>
+    <%= form.label 'タスク名：' %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label 'タスクメモ：' %><br>
+    <%= form.text_area :memo %>
+  </p>
+  <p>
+    <%= form.label '状態：' %><br>
+    <%= form.select :status,{'下書き'=>'draft','公開'=>'published','アーカイブ'=>'archieved'} %>
+  </p>
   <%= form.submit '登録'%>
 <% end%>
 

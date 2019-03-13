@@ -19,7 +19,7 @@ Task.create(
 Task.create(
   title: 'ログイン機能の作成',
   memo: 'ユーザーログイン機能を作成。テストも書く？',
-  is_display: true,
+  is_display: false,
   status: 0,
   created_at: '2019-02-07',
   updated_at: '2019-02-07'

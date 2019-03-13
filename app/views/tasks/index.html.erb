@@ -2,7 +2,7 @@
 <ul>
   <% @tasks.each do |task| %>
     <% if task.is_display%>
-      <li><%= link_to task.title, task %> <%= task.created_at.strftime('%Y年%m月%d日') %></li>
+      <li><%= link_to task.title, task, style: "color:#{status_color(task)};" %> <%= task.created_at.strftime('%Y年%m月%d日') %></li>
     <% end %>
   <% end %>
 </ul>
