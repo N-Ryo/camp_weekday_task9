@@ -1,9 +1,7 @@
 <h1>タスク一覧</h1>
 <ul>
   <% @tasks.each do |task| %>
-    <% if task.is_display%>
-      <li><%= link_to task.title, task, style: "color:#{status_color(task)};" %> <%= task.created_at.strftime('%Y年%m月%d日') %></li>
-    <% end %>
+    <li><%= link_to task.title, task, style: "color:#{status_color(task)};" %> <%= task.created_at.strftime('%Y年%m月%d日') %></li>
   <% end %>
 </ul>
 <%= link_to '出品する', new_task_path %>
