@@ -10,8 +10,10 @@
   </head>
 
   <body>
+    <%# flashメッセージを表示 %>
+    <%# flash内がハッシュになっており、ブロックで渡している名前の通りの中身になっている %>
     <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message, class:"alert alert-#{message_type}", style: "color: blue;") %>
+      <%= content_tag(:div, message, class: 'mt-3 mb-3', style: "color: blue;") %>
     <% end %>
     <%= yield %>
   </body>

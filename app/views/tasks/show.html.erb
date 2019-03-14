@@ -1,7 +1,12 @@
+<%# Taskモデルのタスク名(title)、メモ(memo)、状態(status)、登録日(created_at)を表示すること。 %>
 <p><b>タイトル：<%= @task.title %></b></p>
 <p><b>メモ：<%= @task.memo %></b></p>
 <p><b>状態：<%= @task.status %></b></p>
 <p><b>登録日：<%= @task.created_at.strftime('%Y年%m月%d日') %></b></p>
+
+<%# タスク詳細画面からタスク一覧画面へのリンクで遷移できること。 %>
 <%= link_to '一覧', tasks_path %>
+<%# タスク詳細画面からタスク編集画面へのリンクで遷移できること。 %>
 <%= link_to '編集', edit_task_path %>
+<%# タスク削除リンクがあること。 %>
 <%= link_to '削除', @task, method: :delete, data: { confirm: '削除してよろしいですか？' } %>

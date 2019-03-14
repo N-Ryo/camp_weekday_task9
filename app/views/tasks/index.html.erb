@@ -1,8 +1,16 @@
 <h1>タスク一覧</h1>
+<%# Taskモデルのタスク名(title)、登録日(created_at)を表示すること。 %>
 <ul>
   <% @tasks.each do |task| %>
+  <%# タスク名からタスク詳細画面へのリンクで遷移できること。 %>
+  <%# ApplicationHelperのstatus_colorメソッドを呼び出して、statusの値によって期待されるカラーコードを入れ込む %>
     <li><%= link_to task.title, task, style: "color:#{status_color(task)};" %> <%= task.created_at.strftime('%Y年%m月%d日') %></li>
   <% end %>
 </ul>
+
+
+<%# タスク一覧画面からタスク登録画面へのリンクで遷移できること。 %>
 <%= link_to '出品する', new_task_path %>
+<%# タスク一覧画面からタスク非表示一覧画面へのリンクで遷移できること。 %>
+<%# タスクの非表示画面への遷移URLは/tasks/hideであること。 %>
 <%= link_to '非表示一覧', '/tasks/hide' %>
