@@ -1,0 +1,29 @@
+<%# エラーメッセージがあれば表示する %>
+<% if task.errors.any? %>
+  <div id="error_explanation">
+    <% task.errors.full_messages.each do |message| %>
+      <p style="color: red;"><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_with model: @task, local: true do |form|%>
+  <p>
+    <%= form.label 'タスク名：' %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label 'タスクメモ：' %><br>
+    <%= form.text_area :memo %>
+  </p>
+  <p>
+    <%= form.label '状態：' %><br>
+    <%# selectのオプションを使用して、表示させる文字列と送信されるパラメタを定義する。%>
+    <%= form.select :status,{'下書き'=>'draft','公開'=>'published','アーカイブ'=>'archieved'} %>
+  </p>
+  <%# 送信ボタンがnewとeditで異なるため、このファイルが呼び出される前に@submitをビューで定義する。%>
+  <%= form.submit "#{@submit}"%>
+<% end%>
+<%# タスク編集画面からタスク一覧画面へのリンクで遷移できること。 %>
+<%# タスク登録画面からタスク一覧画面へのリンクで遷移できること。%>
+<%= link_to '一覧', tasks_path %>

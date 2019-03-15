@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CampWeekdayTask9</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%# flashメッセージを表示 %>
+    <%# flash内がハッシュになっており、ブロックで渡している名前の通りの中身になっている %>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: 'mt-3 mb-3', style: "color: blue;") %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
